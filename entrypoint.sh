@@ -37,6 +37,7 @@ fi
 if [ -n "$GITHUB_TOKEN" ]; then
     echo "setting github token"
     git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
+    git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf ssh://git@github.com
 fi
 
 sh -c "firebase $*"
