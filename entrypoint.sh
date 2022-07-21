@@ -34,6 +34,11 @@ if [ -n "$CONFIG_VALUES" ]; then
     firebase functions:config:set "$CONFIG_VALUES"
 fi
 
+if [ -n "$GITHUB_TOKEN" ]; then
+    echo "setting github token"
+    git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
+fi
+
 sh -c "firebase $*"
 
 # response=$(firebase $*)
